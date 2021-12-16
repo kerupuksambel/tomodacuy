@@ -7,9 +7,13 @@
             <div class="row h-100 justify-content-center align-items-center w-100">
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header">Login</div>
+                        <div class="card-header">Register</div>
                         <div class="card-body">
                             <form method="POST">
+                                <div class="form-group">
+                                    <label for="nama">Nama</label>
+                                    <input type="text" name="nama" class="form-control" id="nama"/>
+                                </div>
                                 <div class="form-group">
                                     <label for="username">Username</label>
                                     <input type="text" name="username" class="form-control" id="username"/>

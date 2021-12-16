@@ -3,10 +3,10 @@
     use ArangoDBClient\DocumentHandler;
     use ArangoDBClient\CollectionHandler;
 
+    use DB\Arango\Connection;
     require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
-    require "Connection.php";
-
-    $arango = new ArangoConnection;
+    
+    $arango = new Connection();
     $connection = $arango->db;
     $collectionHandler = new CollectionHandler($connection);
     

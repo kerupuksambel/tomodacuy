@@ -1,13 +1,15 @@
 <?php
+    namespace DB\Arango;
+
     use Dotenv\Dotenv;
     use ArangoDBClient\ConnectionOptions;
-    use ArangoDBClient\Connection;
+    use ArangoDBClient\Connection as ArangoConnection;
     use ArangoDBClient\Statement;
     use ArangoDBClient\UpdatePolicy;
 
     require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 
-    class ArangoConnection{
+    class Connection{
         public $db;
 
         public function __construct(){
@@ -26,7 +28,7 @@
                 ConnectionOptions::OPTION_UPDATE_POLICY => UpdatePolicy::LAST,
             );
              
-            return new Connection($connectionOptions);
+            return new ArangoConnection($connectionOptions);
         }
 
         public function execute($query){ 

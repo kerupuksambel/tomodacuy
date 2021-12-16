@@ -9,7 +9,6 @@
         public function __construct(){
             $dotenv = Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT']);
             $dotenv->load();
-            // $this->db = new \mysqli($_ENV['MYSQL_IP'], $_ENV['MYSQL_USER'], $_ENV['MYSQL_PASS'], 'tomodacuy');
             $dsn = $dsn = 'mysql:host=' . $_ENV['MYSQL_IP'] . ';dbname=tomodacuy;';
             $this->db = new \PDO($dsn, $_ENV['MYSQL_USER'], $_ENV['MYSQL_PASS']);
         }
