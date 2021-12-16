@@ -9,7 +9,7 @@ class Create_posts_table extends AbstractMigration
         $this->table('posts')
         ->addColumn('id', 'char', ['length' => 36])
         ->addColumn('user_id', 'char', ['length' => 36])
-        ->addColumn('content', 'text', ['length' => 32])
+        ->addColumn('content', 'text')
         ->create();
     }
 

@@ -15,8 +15,8 @@
     "autoload": {
         "classmap": [
             "db/mysql/",
-            "db/arango",
-            "helper"
+            "db/arango/",
+            "helper/"
         ]
         
     }

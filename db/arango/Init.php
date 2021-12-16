@@ -2,16 +2,16 @@
     use ArangoDBClient\Collection;
     use ArangoDBClient\DocumentHandler;
     use ArangoDBClient\CollectionHandler;
+    use DB\Arango\Connection as ArangoConnection;
 
-    use DB\Arango\Connection;
     require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
     
-    $arango = new Connection();
+    $arango = new ArangoConnection();
     $connection = $arango->db;
     $collectionHandler = new CollectionHandler($connection);
     
     // make new person collection
-    $collectionName = "person";
+    $collectionName = "users";
     $collection = new Collection($collectionName);
      
     if ($collectionHandler->has($collectionName)) {

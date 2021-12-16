@@ -6,11 +6,14 @@
     use ArangoDBClient\Connection as ArangoConnection;
     use ArangoDBClient\Statement;
     use ArangoDBClient\UpdatePolicy;
+    use ArangoDBClient\Document;
+    use ArangoDBClient\DocumentHandler;
 
     require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 
     class Connection{
         public $db;
+        public $documentHandler;
 
         public function __construct(){
             $dotenv = Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT']);
@@ -28,7 +31,8 @@
                 ConnectionOptions::OPTION_UPDATE_POLICY => UpdatePolicy::LAST,
             );
              
-            return new ArangoConnection($connectionOptions);
+            $this->db = new ArangoConnection($connectionOptions);
+            $this->documentHandler = $documentHandler = new DocumentHandler($this->db);
         }
 
         public function execute($query){ 
@@ -46,6 +50,18 @@
 
             return $cursor;
         } 
+
+        public function insert($collection, $data)
+        {
+            $doc = new Document();
+            foreach ($data as $key => $value) {
+                $doc->set($key, $value);
+            }
+            
+            $documentId = $this->documentHandler->save($collection, $doc);
+
+            return $documentId;
+        }
     }
 
 ?>

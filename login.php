@@ -1,7 +1,9 @@
 <?php
     session_start();
     use DB\MySQL\Connection as MySQLConnection;
-    require "vendor/autoload.php";
+use Helper\View;
+
+require "vendor/autoload.php";
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         $mysql = new MySQLConnection();
@@ -23,5 +25,5 @@
         if(isset($_SESSION['logged'])){
             header("Location: dashboard.php");
         }
-        require "views/login.php";
+        View::view("views/login.php");
     }
