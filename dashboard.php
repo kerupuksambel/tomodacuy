@@ -15,7 +15,7 @@
 
 		// Get friends (and own) posts 
 		$mysql = new MySQLConnection();
-		$stmt = $mysql->preparedStatement("SELECT * FROM posts WHERE `user_id` = :user_id", ['user_id' => $_SESSION['id']]);
+		$stmt = $mysql->preparedStatement("SELECT posts.*, users.nama FROM posts INNER JOIN users ON posts.`user_id` = users.id WHERE `user_id` = :user_id", ['user_id' => $_SESSION['id']]);
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		// $stmt = $mysql->preparedStatement("SELECT * FROM posts");

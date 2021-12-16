@@ -69,9 +69,16 @@
                         </form>
                     </div>
                     <div class="w-100">
+                        <div class="row">
                         <?php foreach ($result as $r): ?>
-                            <div><?= $r["content"] ?></div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header"><?= $r['nama'] ?></div>
+                                    <div class="card-body"><?= $r["content"] ?></div>
+                                </div>
+                            </div>
                         <?php endforeach; ?>
+                        </div>
                     </div>
 				</main>
 			</div>
