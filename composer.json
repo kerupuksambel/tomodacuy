@@ -1,0 +1,21 @@
+{
+    "name": "kerupuksambel/tomodacuy",
+    "require": {
+        "triagens/arangodb": "^3.0",
+        "vlucas/phpdotenv": "^5.4",
+        "ramsey/uuid": "^4.2",
+        "lulco/phoenix": "^1.11"
+    },
+    "authors": [
+        {
+            "name": "Ammar Alifian Fahdan",
+            "email": "kerupuksambel.2000@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "db/mysql/"
+        ]
+        
+    }
+}
