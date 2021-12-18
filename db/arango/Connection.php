@@ -8,12 +8,16 @@
     use ArangoDBClient\UpdatePolicy;
     use ArangoDBClient\Document;
     use ArangoDBClient\DocumentHandler;
+use ArangoDBClient\Edge;
+use ArangoDBClient\EdgeHandler;
+use Ramsey\Uuid\Uuid;
 
-    require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 
     class Connection{
         public $db;
         public $documentHandler;
+        public $edgeHandler;
 
         public function __construct(){
             $dotenv = Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT']);
@@ -32,7 +36,8 @@
             );
              
             $this->db = new ArangoConnection($connectionOptions);
-            $this->documentHandler = $documentHandler = new DocumentHandler($this->db);
+            $this->documentHandler = new DocumentHandler($this->db);
+            $this->edgeHandler = new EdgeHandler($this->db);
         }
 
         public function execute($query){ 
@@ -48,7 +53,7 @@
             
             $cursor = $statement->execute();
 
-            return $cursor;
+            return $cursor->getAll();
         } 
 
         public function insert($collection, $data)
@@ -60,6 +65,31 @@
             
             $documentId = $this->documentHandler->save($collection, $doc);
 
+            return $documentId;
+        }
+
+        public function insertEdge($edgeCollection, $vertexCollection, $from, $to)
+        {
+            $edge = Edge::createFromArray([
+                'key' => Uuid::uuid4()
+            ]);
+            $documentId = $this->edgeHandler->saveEdge(
+                $edgeCollection, 
+                $vertexCollection . '/' . $from,
+                $vertexCollection . '/' . $to,
+                $edge
+            );
+        
+            return $documentId;
+        }
+
+        public function deleteEdge($edgeCollection, $id)
+        {
+            $documentId = $this->edgeHandler->removeById(
+                $edgeCollection, 
+                $id
+            );
+        
             return $documentId;
         }
     }
