@@ -2,9 +2,8 @@
 	session_start();
 
 	use DB\MySQL\Connection as MySQLConnection;
-use Helper\View;
-use Ramsey\Uuid\Uuid;
-
+	use Helper\View;
+	
 	require "vendor/autoload.php";
 
 	if($_SERVER['REQUEST_METHOD'] == "POST"){
