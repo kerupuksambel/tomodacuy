@@ -1,6 +1,13 @@
 <?php
-    require "db/arango/Connection.php";
+    use DB\MySQL\Connection as MySQLConnection;
+	use DB\Arango\Connection as ArangoConnection;
+	use Helper\View;
 
-    $x = new ArangoConnection();
-    var_dump($x->db);
+	require "vendor/autoload.php";
+
+    $mysql = new MySQLConnection();
+    $arango = new ArangoConnection();
+
+    var_dump($mysql);
+    var_dump($arango);
 ?>
