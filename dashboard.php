@@ -19,7 +19,7 @@
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		// $stmt = $mysql->preparedStatement("SELECT * FROM posts");
-		View::view("views/dashboard.php", compact("result"));
+		View::viewTemplate("views/dashboard.php", "dashboard.php", compact("result"));
 	}else{
 		header("Location: login.php");
 	}
