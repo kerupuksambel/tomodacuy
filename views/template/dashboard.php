@@ -18,7 +18,7 @@
 			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="dashboard.php">Tomodacuy</a>
 			<ul class="navbar-nav px-3">
 				<li class="nav-item text-nowrap">
-					<a class="nav-link" href="/logout.php">Sign out</a>
+					<a class="nav-link" href="/logout.php">Keluar</a>
 				</li>
 			</ul>
 		</nav>
@@ -41,15 +41,9 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">
+								<a class="nav-link" href="/setting.php">
 									<span data-feather="settings"></span>
 									Pengaturan
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">
-									<span data-feather="log-out"></span>
-									Keluar
 								</a>
 							</li>
 						</ul>
