@@ -7,7 +7,7 @@
             <div class="row h-100 justify-content-center align-items-center w-100">
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header">Register</div>
+                        <div class="card-header">Daftar</div>
                         <div class="card-body">
                             <form method="POST">
                                 <div class="form-group">
@@ -24,6 +24,9 @@
                                 </div>
                                 <input type="submit" class="btn btn-primary" value="Login">
                             </form> 
+                            <div class="text-center">
+                                Sudah punya akun? <a href="/login.php">Login</a>
+                            </div>
                         </div>
                     </div>
                 </div>
