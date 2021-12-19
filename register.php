@@ -12,8 +12,7 @@
         $username = $_POST['username'];
         $password = md5($_POST['password']);
         $nama = $_POST['nama'];
-        $id = Uuid::uuid4();
-        
+        $id = (string)Uuid::uuid4();
         // Store ID at Arango
         $arango = new ArangoConnection();
         $insertedID = $arango->insert("users", [
